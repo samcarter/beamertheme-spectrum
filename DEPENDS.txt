@@ -1,0 +1,4 @@
+hard beamer
+hard tools
+hard tikz
+hard pgf-spectra

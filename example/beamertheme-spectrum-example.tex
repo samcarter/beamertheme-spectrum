@@ -1,0 +1,44 @@
+% !TeX program = txs:///arara | txs:///view-log | txs:///view-pdf "?am).pdf"
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> }
+% arara: pdftocairo: { 
+% arara: --> format: 'png',
+% arara: --> options: ['-r', '150'],
+% arara: --> }
+% arara: clean: { extensions: [ aux, fdb_latexmk, fls, log, synctex.gz, nav, out, snm, toc ] }
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme[
+%  themecolor=teal,
+%  titlegraphic=blueshade,% from tcolorbox pkg
+%  sectiongraphic=blueshade,% from tcolorbox pkg
+%  titlecredit={Title graphic: tcolorbox package},
+]{spectrum}
+
+\AtBeginSection[]{
+  \begin{frame}
+    \usebeamertemplate{section page}
+  \end{frame}
+}
+
+\title{Some Very Interesting Title}
+\author{Author Name}
+\institute{Cool Conference}
+
+\begin{document}
+
+\maketitle
+
+\section{Section Title}
+
+\begin{frame}
+  \frametitle{Frame Title}
+  Normal frame
+\end{frame}
+
+\begin{frame}[standout]
+  Standout frame
+\end{frame}
+
+\end{document}

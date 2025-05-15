@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Documentation for the spectrum beamer theme
+% A clean beamer theme with a big title graphic
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/beamertheme-spectrum
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See https://www.latex-project.org/lppl.txt
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TeX program = txs:///arara
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> options: [
+% arara: -->    '-shell-escape',
+% arara: -->    '-synctex=1',
+% arara: -->    '-interaction=nonstopmode',
+% arara: -->  ]
+% arara: --> }
+\documentclass{scrartcl}
+
+\usepackage[
+  themecolor=samdblue
+]{\jobname-settings}
+
+% packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{siunitx}
+\usepackage{pgf-spectra}
+\begingroup
+\selectcolormodel{cmyk}
+\pgfspectrashade(420,660){titleshade}
+\endgroup
+
+% meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{The spectrum beamer theme}
+\subtitle{A clean beamer theme with a big title graphic}
+\author{%
+  \texorpdfstring{
+    \tikz{\fill[shading=titleshade,opacity=.75,shading angle=180] (0,0) rectangle (8cm,1cm);}\\[0.5cm]
+    \texttt{samcarter}\\
+    \url{https://github.com/samcarter/beamertheme-spectrum}\\
+%    \url{https://ctan.org/pkg/beamertheme-spectrum}
+  }{samcarter}}
+\date{Version v0.1 \textendash{} 2025/05/15}
+\packagename{beamertheme-spectrum}
+
+\newcommand{\prefix}{./include}
+\tcbset{
+  compilable listing/.style={listing file={\prefix/\jobname-listing-\thetcblistingcount.tex}},
+  run pdflatex/.style={run@system@command={cd\space \prefix;\space pdflatex}{\jobname-listing-\thetcblistingcount.tex}},%
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\label{intro}
+
+The spectrum beamer theme is a clean beamer theme with a big title graphic.
+It is based on my personal beamer theme, which I've been using for various talks in the \TeX\ ecosystem over the past few years\footnote{A collection of slides can be found at \url{https://github.com/samcarter\#tex-talks}}.
+
+The theme is deliberately fairly clean and simple in order to not distract too much from the content.
+The one vanity are the big graphics on the title, section and standout slides.
+A catching image on the title slide will give the audience something to look at while setting up one's talk (we probably all know these awkward pauses while clipping on the microphone or figuring out the wireless presenter\ldots).
+Additionally, a colourful image will also help people find the thumbnail of the slides or of a video recording.
+By default, the spectrum theme will show the optical spectrum between \qty{420}{nm} and \qty{660}{nm} -- hence the name ``spectrum''.
+The theme uses the \TikZ and \saminline|pgf-spectra| packages.
+
+\blurb*
+
+\section{Usage}
+
+The usage is fairly simple -- just load the theme and, if desired, switch on section pages:
+\begin{tcblisting}{
+  listing and comment,
+  pdf comment,
+  freeze pdf,
+  compilable listing,
+  run pdflatex,
+  run pdflatex,
+  comment={
+    \foreach \i in {1,...,4}{%
+      \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-1.pdf}\par
+      \bigskip
+    }
+  },
+  title={Basic example}
+}
+  \documentclass[aspectratio=169]{beamer}
+  
+  \usetheme{spectrum}
+  
+  \AtBeginSection[]{
+    \begin{frame}
+      \usebeamertemplate{section page}
+    \end{frame}
+  }
+  
+  \title{Some Very Interesting Title}
+  \author{Author Name}
+  \institute{Cool Conference}
+  
+  \begin{document}
+  
+  \maketitle
+  
+  \section{Section Title}
+  
+  \begin{frame}
+    \frametitle{Frame Title}
+    Normal frame
+  \end{frame}
+  
+  \begin{frame}[standout]
+    Standout frame
+  \end{frame}
+  
+  \end{document}
+\end{tcblisting}
+
+\section{Options}
+
+The spectrum theme has a couple of options to adjust the design:
+\begin{description}
+\item[themecolor] controls the overall theme colour, e.g. decoration on title, section and standout slides, frame title, block titles, bullet points etc.
+\item[titlegraphic] replaces the optical spectrum on title, section and standout slides with an image 
+(can also be used via \saminline|\titlegraphic{...}| after loading the theme)
+\item[sectiongraphic] replaces the spectrum or image on section and standout slides 
+(can also be used via \saminline|\sectiongraphic{...}| after loading the theme)
+\item[titlecredit] allows the user to add an image credit to the lower right corner of the title page 
+(can also be used via \saminline|\titlecredit{...}| after loading the theme)
+\end{description}
+
+\begin{tcblisting}{
+  listing and comment,
+  pdf comment,
+  freeze pdf,
+  compilable listing,
+  run pdflatex,
+  run pdflatex,
+  comment={
+    \foreach \i in {1,...,4}{%
+      \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-2.pdf}\par
+      \bigskip
+    }
+  },
+  title={Theme options}
+}
+  \documentclass[
+    aspectratio=169, xcolor=dvipsnames
+  ]{beamer}
+  
+  \usetheme[
+    themecolor=Aquamarine,
+    titlegraphic=blueshade,% from tcolorbox pkg
+    sectiongraphic=blueshade,% from tcolorbox pkg
+    titlecredit={Title graphic: tcolorbox package},
+  ]{spectrum}
+  
+  \AtBeginSection[]{
+    \begin{frame}
+      \usebeamertemplate{section page}
+    \end{frame}
+  }
+  
+  \title{Some Very Interesting Title}
+  \author{Author Name}
+  \institute{Cool Conference}
+  
+  \begin{document}
+  
+  \maketitle
+  
+  \section{Section Title}
+  
+  \begin{frame}
+    \frametitle{Frame Title}
+    Normal frame
+  \end{frame}
+  
+  \begin{frame}[standout]
+    Standout frame
+  \end{frame}
+  
+  \end{document}
+\end{tcblisting}
+
+\end{document}

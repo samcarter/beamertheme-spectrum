@@ -1,0 +1,204 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Personal helper theme for package documentations
+% Copyright samcarter
+%
+% This file may be distributed and/or modified
+% under the LaTeX Project Public License 1.3c or later
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Usage:
+% ln ~/Life/latex/beamertheme-sam/themesam.sty package-doc-settings.sty 
+% \usepackage[
+%   themecolor=samdblue
+% ]{\jobname-settings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Colours
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xcolor}
+\definecolor{samyellow}{RGB}{246,193,65}
+\definecolor{samorange}{RGB}{241,147,45}
+\definecolor{samred}{RGB}{191,26,46}
+\definecolor{sammagenta}{RGB}{170,42,104}
+\definecolor{samviolet}{RGB}{136,46,114}
+\definecolor{samlila}{RGB}{101,67,159}
+\definecolor{samdblue}{RGB}{38,38,139}
+\definecolor{samlblue}{RGB}{22,89,155}
+\definecolor{samteal}{RGB}{25,143,157}
+\definecolor{samlgreen}{RGB}{68,170,153}
+\definecolor{samdgreen}{RGB}{78,178,125}
+\definecolor{samlgray}{RGB}{160,160,185}
+\definecolor{samdgray}{RGB}{60,60,85}
+
+\newcommand{\samcolours}{
+  \foreach \sam@col/\sam@pkg in {
+    samyellow/???,
+    samorange/Pgfplots,
+    samred/TikZbricks,
+    sammagenta/TikZmarmots,
+    samviolet/TikZlings,
+    samlila/Rainbow,
+    samdblue/Spectrum,
+    samlblue/TikZducks,
+    samteal/Tcolorbox,
+    samlgreen/Jigsaw,
+    samdgreen/???,
+    samlgray/Cistercian,
+    samdgray/???%
+  }{
+    \begingroup
+      \color{\sam@col}%
+      \makebox[0cm][l]{\rule[-0.9cm]{2.5cm}{2cm}}%
+    \endgroup
+    \parbox[c][2cm]{2.5cm}{\bfseries\color{white}\centering \sam@col\\\sam@pkg}%
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Package options
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\DeclareOptionX{themecolor}[samdblue]{\colorlet{themecolor}{#1}}
+\DeclareOptionX{listingcolor}[samlblue]{\colorlet{listingcolor}{#1}}
+\ExecuteOptionsX{themecolor,listingcolor}
+\ProcessOptionsX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\@ifclassloaded{scrartcl}{%
+  \RequirePackage[english]{babel}
+  \RequirePackage[paper=a4paper,margin=2.9cm]{geometry}
+  \RequirePackage{scrlayer-scrpage}
+  \let\hrulefillx\hrulefill
+  \RequirePackage[bitstream-charter]{mathdesign}
+  \let\hrulefill\hrulefillx
+  \RequirePackage[hang,flushmargin,bottom]{footmisc}
+  \RequirePackage{footnotehyper}
+  \makesavenoteenv{tcolorbox}
+  \RequirePackage[all]{nowidow}
+  \RequirePackage[hyphens]{url}
+  \RequirePackage[colorlinks=true,breaklinks=true,allcolors=themecolor,hyperfootnotes=false]{hyperref}
+}{}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{xspace}
+\RequirePackage{inconsolata}% mono font with bold, but italic is missing
+% \RequirePackage[scale=0.85]{cascadia-code}
+% \AddToHook{cmd/ttfamily/before}{\fontseries{sl}}
+\RequirePackage{synthslant}% to fake slanted comments in inconsolata
+\RequirePackage{metalogox}% should be loaded after the fonts
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Listings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\@ifclassloaded{xbeamer}{}{
+\RequirePackage[cachedir=./.minted]{minted}
+
+\AddToHook{env/MintedVerbatim/before}{%
+  % optional arguments
+  \@namedef{PYG@tok@na}{\def\PYG@tc##1{\textcolor{black}{##1}}}%
+  % macros
+  \@namedef{PYG@tok@k}{\def\PYG@tc##1{\textcolor{listingcolor}{\bfseries ##1}}}%
+  % curly brackets
+  \@namedef{PYG@tok@nb}{\def\PYG@tc##1{\textcolor{listingcolor}{\bfseries ##1}}}%
+  % comments (italics won't work with the inconsolata font)
+  \@namedef{PYG@tok@c}{\def\PYG@tc##1{\textcolor{gray}{\textsynthslant{##1}}}}%
+}
+
+\usemintedstyle{default}
+\setminted{
+  breaksymbolleft={},
+  tabsize=2,
+  breaklines=true,
+}
+\newminted[samcode]{latex}{}
+\newmintinline[saminline]{latex}{}
+
+% use non-bold and all coloured for inline code in articles
+\ifdefined\insertaspectratio\else
+  \patchcmd{\minted@inputpyg@inline}{\minted@input}{\color{listingcolor}\renewcommand\textcolor[3][]{##3}\renewcommand\bfseries{}\minted@input}{}{}
+\fi
+
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{minted}
+\tcbset{%
+  colframe=themecolor,
+  fonttitle=\bfseries,
+  sidebyside,
+  center lower,
+  righthand width=5.7cm,
+  bottom=2pt, 
+  top=2pt,
+  left=3pt,
+  right=3pt,
+  sidebyside gap=10pt,
+  lower separated=false,
+  listing engine=minted,
+  minted language=latex,
+  colback=themecolor!10,
+  sharp corners,
+  boxrule=0pt,
+  before title={\strut}
+}
+
+% avoid page breaks right in front of the tcolorbox
+\@ifclassloaded{beamer}{}{
+  \tcbuselibrary{hooks}
+  \tcbset{before pre={\nopagebreak[4]}}
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% document settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\@ifclassloaded{scrartcl}{%
+  \KOMAoptions{parskip=half}
+  \addtokomafont{sectioning}{\color{themecolor}}
+  \addtokomafont{date}{\normalsize}
+  \addtokomafont{author}{\normalsize}
+  \setlength{\footnotemargin}{0.7em}
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Custom macros
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand*{\CTAN}{\textsc{CTAN}\xspace}
+\providecommand*{\TikZ}{Ti\emph{k}Z\xspace}
+\providecommand*{\miktex}{MiK\TeX\xspace}
+\providecommand*{\texlive}{\TeX{}Live\xspace}
+\providecommand*{\tikzbrick}{Ti\emph{k}Zbrick\xspace}
+\providecommand*{\tikzducks}{Ti\emph{k}Zducks\xspace}
+\providecommand*{\tikzlings}{Ti\emph{k}Zlings\xspace}
+\providecommand*{\tikzmarmots}{Ti\emph{k}Zmarmots\xspace}
+\providecommand*{\ConTeXt}{C\kern-.0333emon\-\kern-.0667em\TeX\kern-.0333emt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Doc blurb
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\packagename}[1]{\def\@packagename{#1}}
+
+\NewDocumentCommand\blurb{s}{%
+  This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package. The development version of the source code can be found at  \url{https://github.com/samcarter/\@packagename}, including an issue tracker.
+  \IfBooleanF#1{%
+    A more stable version of the package can be found on \CTAN (\url{https://ctan.org/pkg/\@packagename}) and is included in both \texlive and \miktex as \texttt{\@packagename}.
+  }%
+  If you seek any other assistance (not bug reports/feature requests), I suggest asking at \url{https://topanswers.xyz/tex}.
+
+  Copyright {\footnotesize\textcopyright} \texttt{samcarter}. Permission is granted to copy, distribute and\slash or modify this software under the terms of the LaTeX project public licence, version 1.3c or later \url{https://www.latex-project.org/lppl.txt}.
+}
