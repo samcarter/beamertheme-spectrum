@@ -26,6 +26,12 @@
 \author{Author Name}
 \institute{Cool Conference}
 
+\setbeamertemplate{logo}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw ([xshift=0.1pt]current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}
+}
+
 \begin{document}
 
 \maketitle

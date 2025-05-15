@@ -54,11 +54,9 @@ The project repository, including a bug tracker, can be found at https://github.
 \end{document}
 ```
 
-|               |
-| ------------- |
-| ![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-1.png) |
-| ![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-2.png) |
-| ![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-3.png) |
-| ![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-4.png) |
+![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-1.png) 
+![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-2.png) 
+![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-3.png) 
+![](https://raw.githubusercontent.com/samcarter/beamertheme-spectrum/main/example/beamertheme-spectrum-example-4.png) 
 
 For more details, please consult the [package documentation](https://github.com/samcarter/beamertheme-spectrum/blob/main/DOCUMENTATION.pdf).
