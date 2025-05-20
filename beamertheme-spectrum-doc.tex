@@ -189,7 +189,7 @@ There is also an experimental \saminline|xbeamer| version of the spectrum theme.
   pdf comment,
   freeze pdf,
   compilable listing,
-  run latexmk-dev,
+  run latexmk={-lualatex -pdflualatex=lualatex-dev  -cd},
   comment={
     \setlength{\fboxsep}{0pt}%
     \foreach \i in {1,...,3}{%
