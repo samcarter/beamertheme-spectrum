@@ -34,10 +34,6 @@
 \pgfspectrashade(420,660){titleshade}
 \endgroup
 
-\tcbset{
-  run latexmk-dev/.style={run@system@command={latexmk -g- -lualatex -pdflualatex=lualatex-dev  -cd  }{#1}},%
-}
-
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The spectrum beamer theme}
 \subtitle{A clean beamer theme with a big title graphic}
@@ -78,7 +74,7 @@ The usage is fairly simple -- just load the theme and, if desired, switch on sec
   pdf comment,
   freeze pdf,
   compilable listing,
-  run latexmk,
+  run latexmk={-g- -pdf -cd},
   comment={
     \foreach \i in {1,...,4}{%
       \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-1.pdf}\par
@@ -137,7 +133,7 @@ The spectrum theme has a couple of options to adjust the design:
   pdf comment,
   freeze pdf,
   compilable listing,
-  run latexmk,
+  run latexmk={-g- -pdf -cd},
   comment={
     \foreach \i in {1,...,4}{%
       \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-2.pdf}\par
