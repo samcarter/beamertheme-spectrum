@@ -62,7 +62,7 @@ The one vanity are the big graphics on the title, section and standout slides.
 A catching image on the title slide will give the audience something to look at while setting up one's talk (we probably all know these awkward pauses while clipping on the microphone or figuring out the wireless presenter\ldots).
 Additionally, a colourful image will also help people find the thumbnail of the slides or of a video recording.
 By default, the spectrum theme will show the optical spectrum between \qty{420}{nm} and \qty{660}{nm} -- hence the name ``spectrum''.
-The theme uses the \TikZ and \saminline|pgf-spectra| packages.
+The image was created using the fantastic \saminline|pgf-spectra| package.
 
 \blurb
 
@@ -120,12 +120,14 @@ The usage is fairly simple -- just load the theme and, if desired, switch on sec
 The spectrum theme has a couple of options to adjust the design:
 \begin{description}
 \item[themecolor] controls the overall theme colour, e.g. decoration on title, section and standout slides, frame title, block titles, bullet points etc.
-\item[titlegraphic] replaces the optical spectrum on title, section and standout slides with an image 
-(can also be used via \saminline|\titlegraphic{...}| after loading the theme)
-\item[sectiongraphic] replaces the spectrum or image on section and standout slides 
-(can also be used via \saminline|\sectiongraphic{...}| after loading the theme)
-\item[titlecredit] allows the user to add an image credit to the lower right corner of the title page 
-(can also be used via \saminline|\titlecredit{...}| after loading the theme)
+\item[titlegraphic] replaces the optical spectrum on title, section and standout slides with an image.
+If \saminline|titlegraphic=none| is used, a solid coloured area in the theme colour is shown instead.
+The title graphic can also be set via \saminline|\titlegraphic{...}| after loading the theme.
+\item[sectiongraphic] replaces the spectrum on section/standout slides.
+If \saminline|sectiongraphic=none| is used, a solid coloured area in the theme colour is shown instead.
+The section graphic can also be set via \saminline|\sectiongraphic{...}| after loading the theme.
+\item[titlecredit] allows the user to add an image credit to the lower right corner of the title page.
+The title credit can also be set via \saminline|\titlecredit{...}| after loading the theme.
 \end{description}
 
 \begin{tcblisting}{

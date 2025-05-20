@@ -21,12 +21,14 @@
 \sectiongraphic{}
 \newcommand\titlecredit[1]{\def\inserttitlecredit{#1}}
 \titlecredit{}
+\def\spectrum@nonetext{none}
 
 \DeclareOptionBeamer{themecolor}{\colorlet{themecolor}{#1}}
 \DeclareOptionBeamer{titlegraphic}{\titlegraphic{#1}}
 \DeclareOptionBeamer{titlecredit}{\titlecredit{#1}}
 \DeclareOptionBeamer{sectiongraphic}{\sectiongraphic{#1}}
 \ExecuteOptionsBeamer{themecolor=beamer@blendedblue!75!black}
+\ExecuteOptionsBeamer{titlegraphic=beamertheme-spectrum-bg.jpg}
 \ProcessOptionsBeamer
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,11 +37,6 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}
-\usepackage{pgf-spectra}
-\begingroup
-\selectcolormodel{cmyk}
-\pgfspectrashade(420,660){titleshade}
-\endgroup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -129,23 +126,24 @@
   \thispagestyle{navigation@titlepage}%
   \begin{tikzpicture}[remember picture,overlay]
     \fill[themecolor] ([yshift=2.5cm]current page.south west) rectangle (current page.north east);    
-    \ifx\inserttitlegraphic\empty
-      \fill[white] ([yshift=2.8cm]current page.south west) rectangle (current page.north east);
-      \fill[shading=titleshade,opacity=.75,shading angle=180] ([yshift=2.8cm]current page.south west) rectangle (current page.north east);
+    \ifx\inserttitlegraphic\spectrum@nonetext
     \else
       \node[anchor=south,inner sep=0pt] at ([yshift=2.8cm]current page.south) {\includegraphics[width=\paperwidth]{\inserttitlegraphic}};
     \fi
     \ifx\inserttitle\empty\else
-      \node[opacity=0.5,anchor=north west,text width=\textwidth,align=flush left] at ([yshift=-\beamer@leftmargin-0.15em,xshift=\beamer@leftmargin+0.1em]current page.north west) {%
-        \usebeamerfont*{title}%
-        \color{black}%
-        \inserttitle\par%
-        \ifx\insertsubtitle\empty\else
-          \medskip
-          \usebeamerfont*{subtitle}%
-          \insertsubtitle\par
-        \fi
-      };    
+      \ifx\inserttitlegraphic\spectrum@nonetext
+      \else
+        \node[opacity=0.5,anchor=north west,text width=\textwidth,align=flush left] at ([yshift=-\beamer@leftmargin-0.15em,xshift=\beamer@leftmargin+0.1em]current page.north west) {%
+          \usebeamerfont*{title}%
+          \color{black}%
+          \inserttitle\par%
+          \ifx\insertsubtitle\empty\else
+            \medskip
+            \usebeamerfont*{subtitle}%
+            \insertsubtitle\par
+          \fi
+        };
+      \fi
       \node[anchor=north west,text width=\textwidth,align=flush left] at ([yshift=-\beamer@leftmargin,xshift=\beamer@leftmargin]current page.north west) {%
         \usebeamercolor[fg]{title}%
         \usebeamerfont*{title}%
@@ -179,9 +177,7 @@
 \setbeamertemplate{section page}{
   \begin{tikzpicture}[remember picture,overlay]
     \fill[themecolor] ([yshift=-2.5cm]current page.north west) rectangle (current page.north east);
-    \ifx\insertsectiongraphic\empty
-      \fill[white] ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
-      \fill[shading=titleshade,opacity=.8,shading angle=180] ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
+    \ifx\insertsectiongraphic\spectrum@nonetext
     \else
       \node[anchor=south,inner sep=0pt] at ([yshift=-2.2cm]current page.north) {\includegraphics[width=\paperwidth]{\insertsectiongraphic}};
     \fi 
@@ -199,9 +195,7 @@
   \setbeamertemplate{headline}{
     \begin{tikzpicture}[remember picture,overlay]
       \fill[themecolor] ([yshift=-2.5cm]current page.north west) rectangle (current page.north east);
-      \ifx\insertsectiongraphic\empty
-        \fill[white] ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
-        \fill[shading=titleshade,opacity=.8,shading angle=180] ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
+      \ifx\insertsectiongraphic\spectrum@nonetext
       \else
         \node[anchor=south,inner sep=0pt] at ([yshift=-2.2cm]current page.north) {\includegraphics[width=\paperwidth]{\insertsectiongraphic}};
       \fi 

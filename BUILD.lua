@@ -16,3 +16,5 @@ ctansummary = "A clean beamer theme with a big title graphic"
 -- common settings =============================================================
 -- https://github.com/samcarter/beamertheme-sam/blob/main/build-settings.lua
 local common_settings, build_settings = pcall(require, "../beamertheme-sam/build-settings.lua")
+
+sourcefiles = {"*.sty", "*.code.tex", "*.jpg"}

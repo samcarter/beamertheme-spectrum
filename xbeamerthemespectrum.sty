@@ -13,6 +13,7 @@
 \sectiongraphic{}
 \newcommand\titlecredit[1]{\def\@titlecredit{#1}}
 \titlecredit{}
+\def\spectrum@nonetext{none}
 
 \RequirePackage{xkeyval}
 \DeclareOptionX{themecolor}[structure!75!black]{%
@@ -68,18 +69,24 @@
     \setlength\unitlength{1cm}
     \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
       \put(0,2.1cm){\color{themecolor}\rule{\paperwidth}{\dimeval{\paperheight-2.1cm}}}
-      \put(0,2.45cm){\includegraphics[width=\paperwidth]{\@titlegraphic}}
-     \ifx\@title\empty\else
-        \put(\dimeval{\Gm@lmargin+0.15em},\dimeval{\paperheight-\Gm@lmargin-1cm-0.15em}){
-          \parbox[t]{\linewidth}{
-            \opacity_select:n { 0.5 }
-            \UseInstance { titlepage-element } {title} { \color{black}\@title }\par
-            \ifx\@subtitle\empty\else
-              \medskip
-              \UseInstance { titlepage-element } {subtitle} { \color{black}\@subtitle }\par
-            \fi
-          }% parbox
-        }% put
+      \ifx\@titlegraphic\spectrum@nonetext
+      \else
+        \put(0,2.45cm){\includegraphics[width=\paperwidth,artifact]{\@titlegraphic}}
+      \fi
+      \ifx\@title\empty\else
+        \ifx\@titlegraphic\spectrum@nonetext
+        \else     
+          \put(\dimeval{\Gm@lmargin+0.15em},\dimeval{\paperheight-\Gm@lmargin-1cm-0.15em}){
+            \parbox[t]{\linewidth}{
+              \opacity_select:n { 0.5 }
+              \UseInstance { titlepage-element } {title} { \color{black}\@title }\par
+              \ifx\@subtitle\empty\else
+                \medskip
+                \UseInstance { titlepage-element } {subtitle} { \color{black}\@subtitle }\par
+              \fi
+            }% parbox
+          }% put
+        \fi
         \put(\Gm@lmargin,\dimeval{\paperheight-\Gm@lmargin-1cm}){
           \parbox[t]{\linewidth}{
             \UseInstance { titlepage-element } {title} { \@title }\par
@@ -158,8 +165,9 @@
       \setlength\unitlength{1cm}
       \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
         \put(0,\dimeval{\paperheight-3.5cm}){\color{themecolor}\rule{\paperwidth}{3.5cm}}
-        \ifx\@sectiongraphic\empty\else
-          \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth]{\@sectiongraphic}}
+        \ifx\@sectiongraphic\spectrum@nonetext
+        \else
+          \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth,artifact]{\@sectiongraphic}}
         \fi
         \put(\Gm@lmargin,\dimeval{\paperheight-6cm}){
           \LARGE\bfseries\l__xbeamer_section_tl\par
