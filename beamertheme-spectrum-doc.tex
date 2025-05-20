@@ -185,4 +185,54 @@ The spectrum theme has a couple of options to adjust the design:
   \end{document}
 \end{tcblisting}
 
+\section{xbeamer}
+
+There is also an experimental \saminline|xbeamer| version of the spectrum theme. It works similarly, but does not offer a \saminline|standout| frame option.
+\begin{tcblisting}{
+  listing and comment,
+  pdf comment,
+  freeze pdf,
+  compilable listing,
+  run latexmk-dev,
+  comment={
+    \setlength{\fboxsep}{0pt}%
+    \foreach \i in {1,...,3}{%
+      \colorbox{white}{\includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-3.pdf}}\par
+      \bigskip
+    }
+  },
+  title={xbeamer theme}
+}
+  % !TeX TS-program = lualatex-dev %
+  \DocumentMetadata{tagging=on}
+  \documentclass{xbeamer}
+  
+  \usepackage[
+  % themecolor=teal,
+  % titlegraphic=blueshade,% from tcolorbox pkg
+  % sectiongraphic=blueshade,% from tcolorbox pkg
+  % titlecredit={Title graphic: tcolorbox package},
+  ]{xbeamerthemespectrum}
+  
+  \AddToHook{section/begin}{
+    \UseTemplate{sectionpage}{xbeamer}{}
+  }
+  
+  \title{Some Very Interesting Title}
+  \author{Author Name}
+  \institute{Cool Conference}
+  
+  \begin{document}
+  
+  \maketitle
+  
+  \section{Section Title}
+  
+  \begin{frame}
+    \frametitle{Frame Title}
+    Normal frame
+  \end{frame}
+  
+  \end{document}
+\end{tcblisting}
 \end{document}

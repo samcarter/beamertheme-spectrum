@@ -1,0 +1,27 @@
+% !TeX program = txs:///arara | txs:///view-log | txs:///view-pdf "?am).pdf"
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> }
+% arara: pdftocairo: { 
+% arara: --> format: 'jpeg',
+% arara: --> options: ['-r', '150', '-singlefile'],
+% arara: --> }
+% arara: clean: { extensions: [ aux, fdb_latexmk, fls, log, synctex.gz, nav, out, snm, toc ] }
+
+\documentclass{beamer}
+
+\usepackage{pgf-spectra}
+\begingroup
+\selectcolormodel{cmyk}
+\pgfspectrashade(420,660){titleshade}
+\endgroup
+
+\begin{document}
+
+\begin{frame}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[shading=titleshade,opacity=.75,shading angle=180] (current page.south west) rectangle (current page.north east);
+\end{tikzpicture}
+\end{frame}
+
+\end{document}
