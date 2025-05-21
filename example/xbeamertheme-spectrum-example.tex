@@ -1,0 +1,32 @@
+% !TeX TS-program = lualatex-dev -interaction=nonstopmode % | txs:///view-pdf | txs:///view-log
+\DocumentMetadata{tagging=on}
+\documentclass{xbeamer}
+
+\usepackage[
+%  themecolor=teal,
+%  titlegraphic=none,
+%  titlegraphic=blueshade,% from tcolorbox pkg
+%  sectiongraphic=blueshade,% from tcolorbox pkg
+%  titlecredit={Title graphic: tcolorbox package},
+]{xbeamerthemespectrum}
+
+\AddToHook{section/begin}{
+  \UseTemplate{sectionpage}{xbeamer}{}
+}
+
+\title{Some Very Interesting Title}
+\author{Author Name}
+\institute{Cool Conference}
+
+\begin{document}
+
+\maketitle
+
+\section{Section Title}
+
+\begin{frame}
+  \frametitle{Frame Title}
+  Normal frame
+\end{frame}
+
+\end{document}
