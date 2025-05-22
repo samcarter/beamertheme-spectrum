@@ -17,4 +17,6 @@ ctansummary = "A clean beamer theme with a big title graphic"
 -- https://github.com/samcarter/beamertheme-sam/blob/main/build-settings.lua
 local common_settings, build_settings = pcall(require, "../beamertheme-sam/build-settings.lua")
 
-sourcefiles = {"*.sty", "*.code.tex", "*.jpg"}
+table.insert(sourcefiles, "*.jpg")
+table.insert(excludefiles, "beamertheme-spectrum-bg.pdf")
+table.insert(excludefiles, "xbeamerthemespectrum.sty")
