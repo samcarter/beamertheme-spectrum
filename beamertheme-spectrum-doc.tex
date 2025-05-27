@@ -71,12 +71,7 @@ The image was created using the fantastic \saminline|pgf-spectra| package.
 The usage is fairly simple -- just load the theme and, if desired, switch on section pages:
 \begin{tcblisting}{
   title={Basic example},
-  listing and comment,
-  pdf comment,
-  freeze pdf,
-  compilable listing,
-  run latexmk={-g- -pdf -cd},
-  comment style={raster columns=1},
+  compilable listing sam
 }
   \documentclass[aspectratio=169]{beamer}
   
@@ -127,12 +122,7 @@ The title credit can also be set via \saminline|\titlecredit{...}| after loading
 
 \begin{tcblisting}{
   title={Theme options},
-  listing and comment,
-  pdf comment,
-  freeze pdf,
-  compilable listing,
-  run latexmk={-g- -pdf -cd},
-  comment style={raster columns=1},
+  compilable listing sam
 }
   \documentclass[
     aspectratio=169, xcolor=dvipsnames
@@ -187,7 +177,7 @@ It works similarly, but does not offer a \saminline|standout| frame option.
   comment style={raster columns=1},
 }
   % !TeX TS-program = lualatex-dev %
-  \DocumentMetadata{tagging=on}
+  \DocumentMetadata{tagging=on,lang=en}
   \documentclass{xbeamer}
   
   \usepackage[
