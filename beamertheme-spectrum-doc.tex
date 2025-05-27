@@ -70,18 +70,13 @@ The image was created using the fantastic \saminline|pgf-spectra| package.
 
 The usage is fairly simple -- just load the theme and, if desired, switch on section pages:
 \begin{tcblisting}{
+  title={Basic example},
   listing and comment,
   pdf comment,
   freeze pdf,
   compilable listing,
   run latexmk={-g- -pdf -cd},
-  comment={
-    \foreach \i in {1,...,4}{%
-      \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-1.pdf}\par
-      \bigskip
-    }
-  },
-  title={Basic example}
+  comment style={raster columns=1},
 }
   \documentclass[aspectratio=169]{beamer}
   
@@ -131,18 +126,13 @@ The title credit can also be set via \saminline|\titlecredit{...}| after loading
 \end{description}
 
 \begin{tcblisting}{
+  title={Theme options},
   listing and comment,
   pdf comment,
   freeze pdf,
   compilable listing,
   run latexmk={-g- -pdf -cd},
-  comment={
-    \foreach \i in {1,...,4}{%
-      \includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-2.pdf}\par
-      \bigskip
-    }
-  },
-  title={Theme options}
+  comment style={raster columns=1},
 }
   \documentclass[
     aspectratio=169, xcolor=dvipsnames
@@ -188,19 +178,13 @@ The title credit can also be set via \saminline|\titlecredit{...}| after loading
 There is also an experimental \saminline|xbeamer| version of the spectrum theme available from its github page\footnote{\url{https://github.com/samcarter/beamertheme-spectrum}}.
 It works similarly, but does not offer a \saminline|standout| frame option.
 \begin{tcblisting}{
+  title={xbeamer theme},
   listing and comment,
   pdf comment,
   freeze pdf,
   compilable listing,
   run latexmk={-lualatex -pdflualatex=lualatex-dev  -cd},
-  comment={
-    \setlength{\fboxsep}{0pt}%
-    \foreach \i in {1,...,3}{%
-      \colorbox{white}{\includegraphics[page=\i,width=.9\linewidth]{beamertheme-spectrum-doc-listing-3.pdf}}\par
-      \bigskip
-    }
-  },
-  title={xbeamer theme}
+  comment style={raster columns=1},
 }
   % !TeX TS-program = lualatex-dev %
   \DocumentMetadata{tagging=on}
@@ -234,4 +218,5 @@ It works similarly, but does not offer a \saminline|standout| frame option.
   
   \end{document}
 \end{tcblisting}
+
 \end{document}
