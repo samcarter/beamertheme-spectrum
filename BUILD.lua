@@ -19,4 +19,4 @@ local common_settings, build_settings = pcall(require, "../beamertheme-sam/build
 
 table.insert(sourcefiles, "*.jpg")
 table.insert(excludefiles, "beamertheme-spectrum-bg.pdf")
-table.insert(excludefiles, "xbeamerthemespectrum.sty")
+-- table.insert(excludefiles, "xbeamerthemespectrum.sty")

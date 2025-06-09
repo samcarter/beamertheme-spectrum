@@ -4,6 +4,8 @@
 
 ### New
 
+- added experimental ltx-talk theme
+
 ### Changed
 
 ### Fixed
@@ -13,7 +15,6 @@
 
 ### New
 
-- added experimental xbeamer theme
 - `none` can be passed to the `titlegraphic` and `sectiongraphic` options to replace the graphics with a solid coloured area in the theme colour
 
 ### Changed
