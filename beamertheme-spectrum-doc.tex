@@ -163,26 +163,26 @@ The title credit can also be set via \saminline|\titlecredit{...}| after loading
   \end{document}
 \end{tcblisting}
 
-\section{xbeamer}
+\section{ltx-talk}
 
-There is also an experimental \saminline|xbeamer| version of the spectrum theme available from its github page\footnote{\url{https://github.com/samcarter/beamertheme-spectrum}}.
+There is also an experimental \saminline|ltx-talk| version of the spectrum theme available from its github page\footnote{\url{https://github.com/samcarter/beamertheme-spectrum}}.
 It works similarly, but does not offer a \saminline|standout| frame option.
 \begin{tcblisting}{
-  title={xbeamer theme},
+  title={ltx-talk theme},
   compilable listing sam
 }
   \DocumentMetadata{tagging=on,lang=en}
-  \documentclass{xbeamer}
+  \documentclass{ltx-talk}
   
   \usepackage[
   % themecolor=teal,
   % titlegraphic=blueshade,% from tcolorbox pkg
   % sectiongraphic=blueshade,% from tcolorbox pkg
   % titlecredit={Title graphic: tcolorbox package},
-  ]{xbeamerthemespectrum}
+  ]{talkthemespectrum}
   
   \AddToHook{section/begin}{
-    \UseTemplate{sectionpage}{xbeamer}{}
+    \UseTemplate{sectionpage}{talk}{}
   }
   
   \title{Some Very Interesting Title}

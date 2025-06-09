@@ -12,7 +12,7 @@
 % See https://www.latex-project.org/lppl.txt
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesPackage{xbeamerthemespectrum}[2025/05/26 version v0.2 Spectrum beamer theme]
+\ProvidesPackage{talkthemespectrum}[2025/05/26 version v0.2 Spectrum beamer theme]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -62,7 +62,6 @@
 % footer
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \EditInstance{footer}{std}{
   color=gray,
   separator={\hfill|\hfill},
@@ -74,8 +73,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ExplSyntaxOn
-\DeclareTemplateInterface { titlepage } { xbeamer } { 0 } { }
-\DeclareTemplateCode { titlepage } { xbeamer } { 0 } { } {
+\DeclareTemplateInterface { titlepage } { talk } { 0 } { }
+\DeclareTemplateCode { titlepage } { talk } { 0 } { } {
   \thispagestyle{plain}
   \centerline{
     \setlength\unitlength{1cm}
@@ -168,8 +167,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ExplSyntaxOn
 \NewTemplateType { sectionpage } { 0 }
-\DeclareTemplateInterface { sectionpage } { xbeamer } { 0 } { }
-\DeclareTemplateCode { sectionpage } { xbeamer } { 0 } { } {
+\DeclareTemplateInterface { sectionpage } { talk } { 0 } { }
+\DeclareTemplateCode { sectionpage } { talk } { 0 } { } {
   \begin{frame}
     \centerline{
       \setlength\unitlength{1cm}
@@ -179,7 +178,7 @@
           \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth,artifact]{\@sectiongraphic}}
         }
         \put(\Gm@lmargin,\dimeval{\paperheight-6cm}){
-          \LARGE\bfseries\l__xbeamer_section_tl\par
+          \LARGE\bfseries\l__talk_section_tl\par
         }        
       \end{picture}
     }% centerline
