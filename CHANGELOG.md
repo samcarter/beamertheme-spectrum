@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v0.3]
+
+### New
+
 - added experimental ltx-talk theme
 
 ### Changed
@@ -31,6 +40,7 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/beamertheme-spectrum/compare/v0.2...HEAD
+[Unreleased]: https://github.com/samcarter/beamertheme-spectrum/compare/v0.3...HEAD
+[v0.3]: https://github.com/samcarter/beamertheme-spectrum/compare/v0.2...v0.3
 [v0.2]: https://github.com/samcarter/beamertheme-spectrum/compare/v0.1...v0.2
 [v0.1]: https://github.com/samcarter/beamertheme-spectrum/compare/v0.0...v0.1
