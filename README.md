@@ -6,7 +6,7 @@
 [![GitHub tag](https://img.shields.io/github/tag/samcarter/beamertheme-spectrum.svg?label=current%20version&color=blue)](https://github.com/samcarter/beamertheme-spectrum/releases/latest)
 [![CTAN](https://img.shields.io/ctan/v/beamertheme-spectrum.svg?color=blue)](https://ctan.org/pkg/beamertheme-spectrum)
 
-A clean beamer theme with a big title graphic.
+A clean beamer/ltx-talk theme with a big title graphic.
 
 It is based on my personal beamer theme, which I've been using for [various talks in the TeX ecosystem](https://github.com/samcarter\#tex-talks) over the past few years.
 
@@ -14,7 +14,7 @@ This project is licensed under the LaTeX Project Public License v1.3c or later, 
 
 The project repository, including a bug tracker, can be found at https://github.com/samcarter/beamertheme-spectrum .
 
-### Example
+### Usage with beamer
 
 ```latex
 \documentclass[aspectratio=169]{beamer}
@@ -49,6 +49,41 @@ The project repository, including a bug tracker, can be found at https://github.
 
 \begin{frame}[standout]
   Standout frame
+\end{frame}
+
+\end{document}
+```
+
+### Usage with ltx-beamer
+
+```latex
+\DocumentMetadata{}
+\documentclass{ltx-talk}
+
+\usepackage[
+%  themecolor=teal,
+%  titlegraphic=blueshade,% from tcolorbox pkg
+%  sectiongraphic=blueshade,% from tcolorbox pkg
+%  titlecredit={Title graphic: tcolorbox package},
+]{talkthemespectrum}
+
+\AddToHook{section/begin}{
+  \UseTemplate{sectionpage}{talk}{}
+}
+
+\title{Some Very Interesting Title}
+\author{Author Name}
+\institute{Cool Conference}
+
+\begin{document}
+
+\maketitle
+
+\section{Section Title}
+
+\begin{frame}
+  \frametitle{Frame Title}
+  Normal frame
 \end{frame}
 
 \end{document}
