@@ -1,4 +1,4 @@
-% !TEX root = ./testing/xtest.tex
+% !TEX root = ./testing/talktest.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % The spectrum beamer theme
@@ -80,11 +80,11 @@
     \setlength\unitlength{1cm}
     \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
       \put(0,2.1cm){\color{themecolor}\rule{\paperwidth}{\dimeval{\paperheight-2.1cm}}}
-      \str_if_eq:eeF \@titlegraphic {none} {
+      \str_if_eq:eeF {\@titlegraphic} {none} {
         \put(0,2.45cm){\includegraphics[width=\paperwidth,artifact]{\@titlegraphic}}
       }
       \ifx\@title\empty\else
-        \str_if_eq:eeF \@titlegraphic {none} {
+        \str_if_eq:eeF {\@titlegraphic} {none} {
           \put(\dimeval{\Gm@lmargin+0.15em},\dimeval{\paperheight-\Gm@lmargin-1cm-0.15em}){
             \parbox[t]{\linewidth}{
               \opacity_select:n { 0.5 }
@@ -174,7 +174,7 @@
       \setlength\unitlength{1cm}
       \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
         \put(0,\dimeval{\paperheight-3.5cm}){\color{themecolor}\rule{\paperwidth}{3.5cm}}
-        \str_if_eq:eeF \@sectiongraphic {none} {
+        \str_if_eq:eeF {\@sectiongraphic} {none} {
           \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth,artifact]{\@sectiongraphic}}
         }
         \put(\Gm@lmargin,\dimeval{\paperheight-6cm}){
