@@ -11,7 +11,7 @@
 module = "beamertheme-spectrum"
 ctanpkg = "beamertheme-spectrum"
 ctanprefix = "/macros/latex/contrib/beamer-contrib/themes/"
-ctansummary = "A clean beamer theme with a big title graphic"
+ctansummary = "A clean beamer/ltx-talk theme with a big title graphic"
 
 -- common settings =============================================================
 -- https://github.com/samcarter/beamertheme-sam/blob/main/build-settings.lua
@@ -19,4 +19,3 @@ local common_settings, build_settings = pcall(require, "../beamertheme-sam/build
 
 table.insert(sourcefiles, "*.jpg")
 table.insert(excludefiles, "beamertheme-spectrum-bg.pdf")
--- table.insert(excludefiles, "xbeamerthemespectrum.sty")
