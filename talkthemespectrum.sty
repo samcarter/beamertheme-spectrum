@@ -21,22 +21,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\titlegraphic}[1]{\def\@titlegraphic{#1}\def\@sectiongraphic{#1}}
-\titlegraphic{}
 \newcommand{\sectiongraphic}[1]{\def\@sectiongraphic{#1}}
-\sectiongraphic{}
 \newcommand\titlecredit[1]{\def\@titlecredit{#1}}
-\titlecredit{}
 
-\RequirePackage{xkeyval}
-\DeclareOptionX{themecolor}[structure!75!black]{%
-  \colorlet{themecolor}{#1}
+\ExplSyntaxOn
+\keys_define:nn { talk@spectrum } {
+  themecolor.code=\colorlet{themecolor}{#1},
+  themecolor.initial:n=structure!75!black,
+  titlegraphic.code=\titlegraphic{#1},
+  titlegraphic.initial:n=beamertheme-spectrum-bg.jpg,
+  titlecredit.code=\titlecredit{#1},
+  titlecredit.initial:n={},
+  sectiongraphic.code=\sectiongraphic{#1},
+  sectiongraphic.initial:n=beamertheme-spectrum-bg.jpg,
 }
-\DeclareOptionX{titlegraphic}[beamertheme-spectrum-bg.jpg]{\titlegraphic{#1}}
-\DeclareOptionX{titlecredit}{\titlecredit{#1}}
-\DeclareOptionX{sectiongraphic}[beamertheme-spectrum-bg.jpg]{\sectiongraphic{#1}}
-
-\ExecuteOptionsX{themecolor,titlegraphic,titlecredit,sectiongraphic}
-\ProcessOptionsX
+\ProcessKeyOptions[talk@spectrum]
+\ExplSyntaxOff
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
