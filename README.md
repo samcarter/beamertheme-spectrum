@@ -54,7 +54,7 @@ The project repository, including a bug tracker, can be found at https://github.
 \end{document}
 ```
 
-### Usage with ltx-beamer
+### Usage with ltx-talk
 
 ```latex
 \DocumentMetadata{}
