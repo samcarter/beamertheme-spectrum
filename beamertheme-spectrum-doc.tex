@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Documentation for the spectrum beamer theme
-% A clean beamer theme with a big title graphic
+% Documentation for the spectrum beamer/ltx-talk theme
+% A clean beamer/ltx-talk theme with a big title graphic
 % Maintained by samcarter
 %
 % Project repository and bug tracker:
@@ -74,34 +74,34 @@ The usage is fairly simple -- just load the theme and, if desired, switch on sec
   compilable listing sam
 }
   \documentclass[aspectratio=169]{beamer}
-  
+
   \usetheme{spectrum}
-  
+
   \AtBeginSection[]{
     \begin{frame}
       \usebeamertemplate{section page}
     \end{frame}
   }
-  
+
   \title{Some Very Interesting Title}
   \author{Author Name}
   \institute{Cool Conference}
-  
+
   \begin{document}
-  
+
   \maketitle
-  
+
   \section{Section Title}
-  
+
   \begin{frame}
     \frametitle{Frame Title}
     Normal frame
   \end{frame}
-  
+
   \begin{frame}[standout]
     Standout frame
   \end{frame}
-  
+
   \end{document}
 \end{tcblisting}
 
@@ -127,39 +127,39 @@ The title credit can also be set via \saminline|\titlecredit{...}| after loading
   \documentclass[
     aspectratio=169, xcolor=dvipsnames
   ]{beamer}
-  
+
   \usetheme[
     themecolor=Aquamarine,
     titlegraphic=blueshade,% from tcolorbox pkg
     sectiongraphic=blueshade,% from tcolorbox pkg
     titlecredit={Title graphic: tcolorbox package},
   ]{spectrum}
-  
+
   \AtBeginSection[]{
     \begin{frame}
       \usebeamertemplate{section page}
     \end{frame}
   }
-  
+
   \title{Some Very Interesting Title}
   \author{Author Name}
   \institute{Cool Conference}
-  
+
   \begin{document}
-  
+
   \maketitle
-  
+
   \section{Section Title}
-  
+
   \begin{frame}
     \frametitle{Frame Title}
     Normal frame
   \end{frame}
-  
+
   \begin{frame}[standout]
     Standout frame
   \end{frame}
-  
+
   \end{document}
 \end{tcblisting}
 
@@ -173,33 +173,33 @@ It works similarly, but does not offer a \saminline|standout| frame option.
 }
   \DocumentMetadata{}
   \documentclass{ltx-talk}
-  
+
   \usepackage[
   % themecolor=teal,
   % titlegraphic=blueshade,% from tcolorbox pkg
   % sectiongraphic=blueshade,% from tcolorbox pkg
   % titlecredit={Title graphic: tcolorbox package},
   ]{talkthemespectrum}
-  
+
   \AddToHook{section/begin}{
     \UseTemplate{sectionpage}{talk}{}
   }
-  
+
   \title{Some Very Interesting Title}
   \author{Author Name}
   \institute{Cool Conference}
-  
+
   \begin{document}
-  
+
   \maketitle
-  
+
   \section{Section Title}
-  
+
   \begin{frame}
     \frametitle{Frame Title}
     Normal frame
   \end{frame}
-  
+
   \end{document}
 \end{tcblisting}
 

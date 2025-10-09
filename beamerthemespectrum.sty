@@ -1,8 +1,8 @@
 % !TeX root = ./testing/test.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% The spectrum beamer theme
-% A clean beamer theme with a big title graphic
+% The spectrum beamer/ltx-talk theme
+% A clean beamer/ltx-talk theme with a big title graphic
 % Maintained by samcarter
 %
 % Project repository and bug tracker:
@@ -85,7 +85,7 @@
   \begin{beamercolorbox}{title in head/foot}
     \usebeamerfont{title in head/foot}
     \quad
-    \ifx\beamer@shortdate\@empty\else        
+    \ifx\beamer@shortdate\@empty\else
       \insertshortdate\hfill{\donotcoloroutermaths$\vert$}\hfill
     \fi
     \expandafter\ifblank\expandafter{\beamer@andstripped}{}{%
@@ -93,7 +93,7 @@
     }%
     \ifx\beamer@shorttitle\@empty\else
       \insertshorttitle\hfill{\donotcoloroutermaths$\vert$}\hfill
-    \fi    
+    \fi
     \ifx\beamer@shortinstitute\@empty\else
       \insertshortinstitute\hfill{\donotcoloroutermaths$\vert$}\hfill
     \fi
@@ -125,7 +125,7 @@
 \setbeamertemplate{title page}{%
   \thispagestyle{navigation@titlepage}%
   \begin{tikzpicture}[remember picture,overlay]
-    \fill[themecolor] ([yshift=2.5cm]current page.south west) rectangle (current page.north east);    
+    \fill[themecolor] ([yshift=2.5cm]current page.south west) rectangle (current page.north east);
     \ifx\inserttitlegraphic\spectrum@nonetext
     \else
       \node[anchor=south,inner sep=0pt] at ([yshift=2.8cm]current page.south) {\includegraphics[width=\paperwidth]{\inserttitlegraphic}};
@@ -153,9 +153,9 @@
           \usebeamercolor[fg]{subtitle}%
           \usebeamerfont*{subtitle}%
           \insertsubtitle\par
-        \fi        
+        \fi
       };
-    \fi    
+    \fi
     \node[anchor=south west,text width=\textwidth,minimum height=2cm] at ([xshift=\beamer@leftmargin,yshift=0.25cm]current page.south west) {
       \expandafter\ifblank\expandafter{\beamer@andstripped}{}{%
         \usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor\par\smallskip
@@ -165,11 +165,11 @@
       \fi
       \ifx\insertdate\@empty \else
         \usebeamercolor[fg]{date}\usebeamerfont{date}\insertdate\par
-      \fi      
+      \fi
     };
     \node[anchor=south east,font=\tiny,align=right,inner sep=0.15cm] at (current page.south east) {
       \inserttitlecredit\par
-    };    
+    };
   \end{tikzpicture}
 }
 
@@ -180,7 +180,7 @@
     \ifx\insertsectiongraphic\spectrum@nonetext
     \else
       \node[anchor=south,inner sep=0pt] at ([yshift=-2.2cm]current page.north) {\includegraphics[width=\paperwidth]{\insertsectiongraphic}};
-    \fi 
+    \fi
     \node[anchor=north west,text width=\textwidth] at ([xshift=\beamer@leftmargin,yshift=-3.75cm]current page.north west) {
       \usebeamercolor[fg]{section}\usebeamerfont{section}\insertsection\par
     };
@@ -198,7 +198,7 @@
       \ifx\insertsectiongraphic\spectrum@nonetext
       \else
         \node[anchor=south,inner sep=0pt] at ([yshift=-2.2cm]current page.north) {\includegraphics[width=\paperwidth]{\insertsectiongraphic}};
-      \fi 
+      \fi
     \end{tikzpicture}
     \vskip2.5cm
   }
