@@ -6,6 +6,8 @@
 
 ### Changed
 
+- ltx-talk theme: only show footline separator for non-empty elements
+
 ### Fixed
 
 
