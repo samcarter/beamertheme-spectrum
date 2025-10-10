@@ -70,52 +70,6 @@
   left-skip=3mm,
 }
 
-\ExplSyntaxOn
-\DeclareTemplateCode { footer } { talk } { 0 }
-  {
-    background-color = \l__talk_footer_bg_tl ,
-    color            = \l__talk_footer_fg_tl ,
-    element-order    = \l__talk_footer_order_clist ,
-    separator        = \l__talk_footer_sep_tl ,
-    font             = \l__talk_footer_font_tl ,
-    left-skip        = \l__talk_footer_left_skip ,
-    right-skip       = \l__talk_footer_right_skip
-  }
-  {
-    \noindent
-    \__talk_wallpaper_hrule:Nnn
-      \l__talk_footer_bg_tl
-      { \footskip }
-      { \Gm@bmargin - \footskip }
-    \skip_horizontal:n { \l__talk_footer_left_skip }
-    \vbox_set_to_wd:Nnn \l__talk_tmp_box
-      {
-          \paperwidth
-        - \l__talk_footer_left_skip
-        - \l__talk_footer_right_skip
-      }
-      {
-        \tl_if_empty:NF \l__talk_footer_fg_tl
-          { \color_select:V \l__talk_footer_fg_tl }
-        \l__talk_footer_font_tl
-        \clist_pop:NNT \l__talk_footer_order_clist \l__talk_tmp_tl
-          {
-            \ExpandArgs { nVv } \UseInstance { footer-element } \l__talk_tmp_tl
-              { @ \l__talk_tmp_tl }
-            \clist_map_inline:Nn \l__talk_footer_order_clist
-              {
-                \tl_if_empty:cF { @ ##1 } { \l__talk_footer_sep_tl }
-                \ExpandArgs { nnv }
-                  \UseInstance { footer-element } {##1} { @ ##1 }
-              }
-          }
-        \hfil
-      }
-    \box_use_drop:N \l__talk_tmp_box
-    \skip_horizontal:n { \l__talk_footer_right_skip - \Gm@rmargin }
-  }
-\ExplSyntaxOff
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ExplSyntaxOn
