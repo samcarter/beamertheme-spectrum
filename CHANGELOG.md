@@ -4,6 +4,8 @@
 
 ### New
 
+- ltx-talk theme: support short version of author, title etc. for footline
+
 ### Changed
 
 - ltx-talk theme: only show footline separator for non-empty elements

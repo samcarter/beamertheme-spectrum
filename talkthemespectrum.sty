@@ -14,6 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{talkthemespectrum}[2025/07/12 version v0.3 Spectrum beamer theme]
 
+\RequirePackage{xpatch}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % option handling
@@ -62,6 +64,62 @@
 % footer
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ExplSyntaxOn
+\keys_define:nn { talk@spectrum-footer } {
+  short-title.code:n = \def\@shorttitle{#1},
+  short-author.code:n = \def\@shortauthor{#1},
+  short-subtitle.code:n = \def\@shortsubtitle{#1},
+  short-institute.code:n = \def\@shortinstitute{#1},
+  short-date.code:n = \def\@shortdate{#1},
+}
+\keys_set:nn { talk@spectrum-footer } {
+  short-title     = {},
+  short-author    = {},
+  short-subtitle  = {},
+  short-institute = {},
+  short-date      = {},
+}
+
+\cs_set_nopar:Npn \@title { }
+\RenewDocumentCommand \title { = { short-title } O {#2} m } {
+  \cs_gset_nopar:Npn \@title {#2}
+  \tl_gset_eq:NN\g__tag_title_title_tl\@title
+  \keys_set:nn { talk@spectrum-footer } { #1 }
+}
+\RenewDocumentCommand \subtitle { = { short-subtitle } O {#2} m } {
+  \cs_gset_nopar:Npn \@subtitle {#2}
+  \keys_set:nn { talk@spectrum-footer } { #1 }
+}
+\cs_set_nopar:Npn \@author { }
+\RenewDocumentCommand \author { = { short-author } O {#2} m } {
+  \cs_gset_nopar:Npn \@author {#2}
+  \tl_gset_eq:NN\g__tag_title_author_tl\@author
+  \keys_set:nn { talk@spectrum-footer } { #1 }
+}
+\RenewDocumentCommand \institute { = { short-institute } O {#2} m } {
+  \cs_gset_nopar:Npn \@institute {#2}
+  \keys_set:nn { talk@spectrum-footer } { #1 }
+}
+\RenewDocumentCommand \date { = { short-date } O {#2} m } {
+  \cs_gset_nopar:Npn \@date {#2}
+  \keys_set:nn { talk@spectrum-footer } { #1 }
+}
+\date{\today}
+\cs_new:Npn \@shortframenumber { \arabic { frame } }
+
+\expandafter
+\xpatchcmd\csname\c__template_code_root_tl footer / talk \endcsname {
+\noindent
+}{
+\noindent
+\RenewCommandCopy{\@author}{\@shortauthor}
+\RenewCommandCopy{\@title}{\@shorttitle}
+\RenewCommandCopy{\@institute}{\@shortinstitute}
+\RenewCommandCopy{\@date}{\@shortdate}
+\RenewCommandCopy{\@framenumber}{\@shortframenumber}
+}{}{}
+\ExplSyntaxOff
+
 \EditInstance{footer}{std}{
   color=gray,
   separator={\hfill|\hfill},
