@@ -2,7 +2,7 @@ name: Check Build
 
 on:
   schedule:
-    - cron: '40 * * * 3'
+    - cron: '47 13 * * 3'
 
 permissions:
   contents: write
@@ -13,9 +13,15 @@ jobs:
     name: check
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           submodules: true
+      - name: Checkout
+        uses: actions/checkout@v5
+        with: 
+          repository: josephwright/ltx-talk
+          path: ltx-talk
+          submodules: true    
       - name: Install TeX Live
         uses: zauguin/install-texlive@v3
         with:
@@ -24,6 +30,9 @@ jobs:
         env:
           TMPDIR: ${{ runner.temp }}      
         run: |
+          cd ltx-talk
+          l3build install
+          cd $GITHUB_WORKSPACE
           file=./testing/$(basename -a -s .tex talktest.tex)  
           latexmk --pdf -pdflatex="pdflatex-dev %O %S" $file     
           mkdir art
