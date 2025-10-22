@@ -1,0 +1,93 @@
+l3build
+latex-bin
+latex-bin-dev
+latex-lab
+latex-lab-dev
+latex-tools-dev
+tex
+latexmk
+amsmath
+bigintcalc
+bitset
+bookmark
+ec
+epstopdf-pkg
+etoolbox
+geometry
+gettitlestring
+graphics
+graphics-cfg
+graphics-def
+hycolor
+hyperref
+iftex
+infwarerr
+intcalc
+kvdefinekeys
+kvoptions
+kvsetkeys
+l3backend
+l3kernel
+l3packages
+latex
+latex-lab
+latexconfig
+lm
+ltxcmds
+ltx-talk
+pdfescape
+pdfmanagement-testphase
+pdftexcmds
+refcount
+sansmathfonts
+stringenc
+tagpdf
+tools
+url
+xcolor
+xpatch
+
+# metafont
+# mfware
+# geometry
+# relsize
+# # Dependencies for documentation
+# alphalph
+# amsfonts
+# amsmath
+# bookmark
+# booktabs
+# colortbl
+# csquotes
+# ec
+# enumitem
+# epstopdf-pkg
+# fancyvrb
+# graphics
+# hologo
+# hypdoc
+# hyperref
+# iftex
+# infwarerr
+# latex-bin-dev
+# latex-lab
+# latex-lab-dev
+# latex-tools-dev
+# lualatex-math
+# luamml
+# kvoptions
+# newcomputermodern
+# pdfmanagement-testphase
+# pdftexcmds
+# psnfss
+# sansmathfonts
+# siunitx
+# tagpdf
+# tools
+# underscore
+# unicode-math
+# xcolor
+# # Indexing (needed to compile docs)
+# makeindex
+# ltx-talk
+# xpatch

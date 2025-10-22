@@ -1,0 +1,32 @@
+% !TeX TS-program = pdflatex-dev -interaction=nonstopmode % | txs:///view-pdf | txs:///view-log
+\DocumentMetadata{}
+\documentclass{ltx-talk}
+
+\usepackage[
+%  themecolor=teal,
+%  titlegraphic=none,
+%  titlegraphic=blueshade,% from tcolorbox pkg
+%  sectiongraphic=blueshade,% from tcolorbox pkg
+%  titlecredit={Title graphic: tcolorbox package},
+]{talkthemespectrum}
+
+\AddToHook{section/begin}{
+  \UseTemplate{sectionpage}{talk}{}
+}
+
+\title[short title]{Some Very Interesting Title}
+\author[short author]{Author Name}
+\institute[short institute]{Cool Conference}
+
+\begin{document}
+
+\maketitle
+
+\section{Section Title}
+
+\begin{frame}
+  \frametitle{Frame Title}
+  Normal frame
+\end{frame}
+
+\end{document}

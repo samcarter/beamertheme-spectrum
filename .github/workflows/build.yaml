@@ -1,0 +1,36 @@
+name: Check Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          submodules: true
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+           package_file: ./.github/tl_packages
+      - name: Compile presentation
+        env:
+          TMPDIR: ${{ runner.temp }}      
+        run: |
+          file=./testing/$(basename -a -s .tex talktest.tex)  
+          latexmk --pdf -pdflatex="pdflatex-dev %O %S" $file     
+          mkdir art
+          cp talktest.pdf art/
+      - name: Upload build artifats
+        uses: actions/upload-artifact@v4
+        with:
+          path: art

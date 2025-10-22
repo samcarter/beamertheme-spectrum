@@ -1,0 +1,59 @@
+\documentclass[
+  aspectratio=169,
+  xcolor=dvipsnames
+]{beamer}
+
+
+\usetheme[
+%  themecolor=teal,
+%  titlegraphic=none,
+%  titlegraphic=blueshade,% from tcolorbox pkg
+%  sectiongraphic=blueshade,% from tcolorbox pkg
+sectiongraphic=none,
+%  titlecredit={Title graphic: tcolorbox package},
+]{spectrum}
+
+\AtBeginSection[]{
+  \begin{frame}
+    \usebeamertemplate{section page}
+  \end{frame}
+}
+
+\title{Some Very Interesting Title}
+%\titlegraphic{blueshade}
+%\titlecredit{
+%  \scriptsize
+%  Title graphic: Tcolorbox package
+%}
+%\sectiongraphic{blueshade}
+\author{Author Name}
+\institute{Cool Conference}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+
+\begin{itemize}
+\item test
+\end{itemize}
+\frametitle{title}
+  \begin{block}{title}
+  content...
+  \end{block}
+  \begin{alertblock}{title}
+  content...
+  \end{alertblock}
+  \begin{exampleblock}{title}
+  content...
+  \end{exampleblock}    
+\end{frame}
+
+\section{title}
+
+\begin{frame}[standout]
+Thanks!
+\end{frame}
+
+\end{document}
