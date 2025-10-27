@@ -6,6 +6,8 @@
 
 ### Changed
 
+- ltx-talk theme: short title etc. is now natively supported by ltx-talk
+
 ### Fixed
 
 
