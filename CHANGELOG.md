@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- ltx-talk theme: adapt to new header/footer key names
+
 
 ## [v0.4]
 
