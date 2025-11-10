@@ -15,7 +15,7 @@
 
 ### Changed
 
-- ltx-talk theme: short title etc. is now natively supported by ltx-talk
+- ltx-talk theme: short title etc. are now natively supported by ltx-talk
 
 ### Fixed
 
