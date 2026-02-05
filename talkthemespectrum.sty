@@ -24,10 +24,12 @@
 \newcommand{\sectiongraphic}[1]{\def\@sectiongraphic{#1}}
 \newcommand\titlecredit[1]{\def\@titlecredit{#1}}
 
+\DeclareColor{spectrum@colour}[RGB]{38, 38, 134}
+
 \ExplSyntaxOn
 \keys_define:nn { talk@spectrum } {
-  themecolor.code=\colorlet{themecolor}{#1},
-  themecolor.initial:n=structure!75!black,
+  themecolor.code=\colorlet{structure}{#1},
+  themecolor.initial:n=spectrum@colour,
   titlegraphic.code=\titlegraphic{#1},
   titlegraphic.initial:n=beamertheme-spectrum-bg.jpg,
   titlecredit.code=\titlecredit{#1},
@@ -46,13 +48,13 @@
 
 % adjust space above/below frametitle -> this sets position within the coloured background
 \geometry{
-  tmargin=1.8cm,
-  headsep=0.8cm,
+  tmargin = 1.8cm,
+  headsep = 0.8cm,
 }
 
 % header settings
 \EditInstance{header}{std}{
-  background-color = themecolor,
+  background-color = structure,
   color = white,
   height = 1.8cm
 }
@@ -64,11 +66,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \EditInstance{footer}{std}{
-  color=gray,
-  separator={\hfill|\hfill},
-  element-order={date,author,title,institute,framenumber},
-  right-hspace=3mm,
-  left-hspace=3mm,
+  color = gray,
+  separator = {\hfill|\hfill},
+  element-order = {date,author,title,institute,framenumber},
+  right-hspace = 3mm,
+  left-hspace = 3mm,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +82,7 @@
   \centerline{
     \setlength\unitlength{1cm}
     \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
-      \put(0,2.1cm){\color{themecolor}\rule{\paperwidth}{\dimeval{\paperheight-2.1cm}}}
+      \put(0,2.1cm){\color{structure}\rule{\paperwidth}{\dimeval{\paperheight-2.1cm}}}
       \str_if_eq:eeF {\@titlegraphic} {none} {
         \put(0,2.45cm){\includegraphics[width=\paperwidth,artifact]{\@titlegraphic}}
       }
@@ -174,7 +176,7 @@
     \centerline{
       \setlength\unitlength{1cm}
       \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
-        \put(0,\dimeval{\paperheight-3.5cm}){\color{themecolor}\rule{\paperwidth}{3.5cm}}
+        \put(0,\dimeval{\paperheight-3.5cm}){\color{structure}\rule{\paperwidth}{3.5cm}}
         \str_if_eq:eeF {\@sectiongraphic} {none} {
           \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth,artifact]{\@sectiongraphic}}
         }

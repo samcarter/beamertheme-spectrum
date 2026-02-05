@@ -6,6 +6,8 @@
 
 ### Changed
 
+- ltx-talk: utilisiing `structure` colour instead of creating a new colour (this ensures that also elements like itemize bullets are coloured correctly)
+
 ### Fixed
 
 
